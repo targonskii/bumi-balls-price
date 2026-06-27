@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Прайс на надувание шаров</title>
+
+        <meta
+            name="description"
+            content="Стоимость надувания воздушных шаров гелием"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- HEADER -->
+
+            <header>
+                <div class="logo">🎈</div>
+
+                <h1>Надувание шаров</h1>
+
+                <p class="subtitle">Актуальный прайс на услуги</p>
+            </header>
+
+            <!-- FILTER -->
+
+            <section class="switch">
+                <button class="tab active" data-sheet="ourBalls">
+                    Наши шары
+                </button>
+
+                <button class="tab" data-sheet="guestBalls">
+                    Шары клиентов
+                </button>
+            </section>
+
+            <!-- SEARCH -->
+
+            <section class="search">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Поиск по названию шара"
+                />
+            </section>
+
+            <!-- STATUS -->
+
+            <div id="status" class="status">Загрузка...</div>
+
+            <!-- CATALOG -->
+
+            <main id="catalog" class="catalog"></main>
+
+            <!-- EMPTY -->
+
+            <div id="empty" class="empty hidden">
+                <div class="empty-icon">🎈</div>
+
+                <p>Ничего не найдено</p>
+            </div>
+
+            <!-- FOOTER -->
+
+            <footer>
+                <p>Цены обновляются автоматически</p>
+            </footer>
+        </div>
+
+        <template id="cardTemplate">
+            <article class="card">
+                <div class="card-info">
+                    <h2 class="ball-name"></h2>
+                </div>
+
+                <div class="price">
+                    <span class="value"></span>
+
+                    <span class="currency"> BYN </span>
+                </div>
+            </article>
+        </template>
+
+        <script src="script.js"></script>
+    </body>
+</html>
