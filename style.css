@@ -78,10 +78,18 @@ h1 {
 .card {
     display: flex;
     justify-content: space-between;
-    padding: 14px;
+    align-items: flex-start;
+
+    gap: 20px; /* 🔥 ВОТ ЭТО НУЖНО */
+
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
+
+    padding: 14px;
+
+    transition: all 0.2s ease;
+    cursor: default;
 }
 
 /* TEXT */
@@ -105,9 +113,21 @@ h1 {
     background: #fff7ed;
     border: 1px solid #fed7aa;
     color: #9a3412;
-    padding: 12px;
+
+    padding: 12px 14px;
     border-radius: 12px;
+
+    font-size: 12px;
+    line-height: 1.5;
+
     margin: 12px 0;
+
+    /* ВАЖНО: полный текст всегда */
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 
 /* EMPTY */
