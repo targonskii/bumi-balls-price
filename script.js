@@ -18,6 +18,7 @@ const tabs = document.querySelectorAll(".tab");
 const template = document.getElementById("cardTemplate");
 const loader = document.getElementById("loader");
 const warningBanner = document.getElementById("warningBanner");
+const emptyBlock = document.getElementById("empty");
 
 init();
 
@@ -75,7 +76,7 @@ async function loadData(sheetName) {
         const res = await fetch(`${API_URL}?sheet=${sheetName}`);
         const data = await res.json();
 
-        allData = data.map((item) => ({
+        allData = (data || []).map((item) => ({
             name: item.name ?? "",
             price: item.price ?? "",
         }));
@@ -116,10 +117,19 @@ function filterData(q) {
 function render() {
     catalog.innerHTML = "";
 
+    if (!filteredData.length) {
+        if (emptyBlock) emptyBlock.classList.remove("hidden");
+        return;
+    } else {
+        if (emptyBlock) emptyBlock.classList.add("hidden");
+    }
+
     filteredData.forEach((item) => {
         const card = template.content.cloneNode(true);
+
         card.querySelector(".ball-name").textContent = item.name;
         card.querySelector(".value").textContent = item.price;
+
         catalog.appendChild(card);
     });
 }
