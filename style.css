@@ -23,7 +23,7 @@ body {
 }
 
 /* =======================
-   CONTAINER (Shopify layout)
+   CONTAINER
 ======================= */
 
 .container {
@@ -33,7 +33,7 @@ body {
 }
 
 /* =======================
-   HEADER (store style)
+   HEADER
 ======================= */
 
 header {
@@ -44,12 +44,6 @@ header {
 .logo {
     font-size: 36px;
     margin-bottom: 8px;
-}
-
-.logo img {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
 }
 
 h1 {
@@ -64,7 +58,7 @@ h1 {
 }
 
 /* =======================
-   SWITCH (collections)
+   SWITCH
 ======================= */
 
 .switch {
@@ -96,7 +90,7 @@ h1 {
 }
 
 /* =======================
-   SEARCH (shop search bar)
+   SEARCH
 ======================= */
 
 .search {
@@ -111,7 +105,6 @@ h1 {
     outline: none;
     font-size: 14px;
     background: #fff;
-    transition: 0.2s;
 }
 
 .search input:focus {
@@ -130,7 +123,7 @@ h1 {
 }
 
 /* =======================
-   CATALOG (SHOP GRID)
+   CATALOG
 ======================= */
 
 .catalog {
@@ -141,7 +134,7 @@ h1 {
 }
 
 /* =======================
-   CARD (Shopify product card)
+   CARD
 ======================= */
 
 .card {
@@ -156,7 +149,6 @@ h1 {
     padding: 14px;
 
     transition: all 0.2s ease;
-    cursor: default;
 }
 
 .card:hover {
@@ -166,7 +158,7 @@ h1 {
 }
 
 /* =======================
-   PRODUCT TITLE
+   TEXT (FIXED — NO TRUNCATION)
 ======================= */
 
 .ball-name {
@@ -178,15 +170,17 @@ h1 {
 
     line-height: 1.4;
 
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    /* ❌ УБРАНО:
+       - line-clamp
+       - overflow hidden
+    */
 
-    overflow: hidden;
+    white-space: normal;
+    word-break: break-word;
 }
 
 /* =======================
-   PRICE BLOCK
+   PRICE
 ======================= */
 
 .price {
@@ -215,7 +209,7 @@ h1 {
 }
 
 /* =======================
-   EMPTY STATE
+   EMPTY
 ======================= */
 
 .empty {
@@ -271,6 +265,10 @@ footer {
     }
 }
 
+/* =======================
+   WARNING
+======================= */
+
 .warning {
     background: #fff7ed;
     border: 1px solid #fed7aa;
@@ -285,8 +283,4 @@ footer {
     margin: 12px 0;
 
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
-}
-
-.hidden {
-    display: none;
 }
