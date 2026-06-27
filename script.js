@@ -95,10 +95,10 @@ async function loadData(sheetName) {
 }
 
 function toggleWarning(sheet) {
+    if (!warningBanner) return;
+
     if (sheet === SHEETS.theirs) {
         warningBanner.classList.remove("hidden");
-        warningBanner.textContent =
-            "Услуга по надуванию шаров покупателей производится при полной предоплате...";
     } else {
         warningBanner.classList.add("hidden");
     }
