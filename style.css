@@ -26,7 +26,7 @@ body {
 }
 
 /* =======================
-   HEADER (NEW with icons support)
+   HEADER
 ======================= */
 
 header {
@@ -58,21 +58,36 @@ header .subtitle {
     text-align: right;
 }
 
-.phone,
-.address {
+/* 🔥 FIX: phone ALWAYS one line */
+.phone {
     display: inline-flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 6px;
 
     font-size: 13px;
     text-decoration: none;
     color: var(--text);
     line-height: 1.4;
+
+    white-space: nowrap; /* КЛЮЧЕВО */
+}
+
+/* 🔥 FIX: address looks clickable */
+.address {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 6px;
+
+    font-size: 13px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color: #2563eb; /* как ссылка */
+    line-height: 1.4;
 }
 
 .phone:hover,
 .address:hover {
-    text-decoration: underline;
+    opacity: 0.8;
 }
 
 /* =======================
@@ -147,7 +162,6 @@ header .subtitle {
     font-size: 14px;
     line-height: 1.4;
 
-    /* важно: без обрезки текста */
     white-space: normal;
     word-break: break-word;
 }
@@ -165,7 +179,7 @@ header .subtitle {
 }
 
 /* =======================
-   WARNING (FULL TEXT FIX)
+   WARNING
 ======================= */
 
 .warning {
@@ -181,14 +195,13 @@ header .subtitle {
 
     margin: 12px 0;
 
-    /* 🔥 гарантированно полный текст */
     white-space: normal;
     word-break: break-word;
     overflow-wrap: anywhere;
 }
 
 /* =======================
-   LOADER (Shopify style)
+   LOADER
 ======================= */
 
 .loader {
@@ -244,6 +257,30 @@ header .subtitle {
     opacity: 0;
     pointer-events: none;
     transition: 0.3s;
+}
+
+/* =======================
+   MOBILE FIX (iPhone 15 Pro)
+======================= */
+
+@media (max-width: 430px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .header-contacts {
+        text-align: left;
+        width: 100%;
+    }
+
+    .phone {
+        white-space: nowrap; /* 🔥 строго одна строка */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
 }
 
 /* =======================
