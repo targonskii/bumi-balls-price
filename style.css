@@ -58,21 +58,31 @@ header .subtitle {
     text-align: right;
 }
 
-/* 🔥 FIX: phone ALWAYS one line */
+/* =======================
+   PHONE (UPDATED)
+======================= */
+
 .phone {
     display: inline-flex;
     align-items: center;
     gap: 6px;
 
-    font-size: 13px;
+    font-size: 15px; /* 🔥 было 13px → стало крупнее */
+    font-weight: 600; /* 🔥 чуть жирнее */
     text-decoration: none;
     color: var(--text);
     line-height: 1.4;
 
-    white-space: nowrap; /* КЛЮЧЕВО */
+    white-space: nowrap;
+
+    padding-top: 6px; /* 🔥 отступ сверху */
+    padding-bottom: 6px; /* 🔥 отступ снизу */
 }
 
-/* 🔥 FIX: address looks clickable */
+/* =======================
+   ADDRESS
+======================= */
+
 .address {
     display: inline-flex;
     align-items: flex-start;
@@ -81,7 +91,7 @@ header .subtitle {
     font-size: 13px;
     text-decoration: underline;
     text-underline-offset: 2px;
-    color: #2563eb; /* как ссылка */
+    color: #2563eb;
     line-height: 1.4;
 }
 
@@ -156,7 +166,6 @@ header .subtitle {
     cursor: default;
 }
 
-/* TEXT */
 .ball-name {
     flex: 1;
     font-size: 14px;
@@ -166,7 +175,6 @@ header .subtitle {
     word-break: break-word;
 }
 
-/* PRICE */
 .price {
     text-align: right;
     flex-shrink: 0;
@@ -260,7 +268,15 @@ header .subtitle {
 }
 
 /* =======================
-   MOBILE FIX (iPhone 15 Pro)
+   UTILS
+======================= */
+
+.hidden {
+    display: none;
+}
+
+/* =======================
+   MOBILE FIX
 ======================= */
 
 @media (max-width: 430px) {
@@ -276,17 +292,9 @@ header .subtitle {
     }
 
     .phone {
-        white-space: nowrap; /* 🔥 строго одна строка */
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
     }
-}
-
-/* =======================
-   UTILS
-======================= */
-
-.hidden {
-    display: none;
 }
