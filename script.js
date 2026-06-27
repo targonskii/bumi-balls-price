@@ -7,6 +7,7 @@ const SHEETS = {
 };
 
 const CACHE_KEY = "ball_price_cache_v1";
+const CACHE_TTL = 60 * 1000; // 60 секунд
 
 let currentSheet = SHEETS.ours;
 let allData = [];
@@ -62,9 +63,13 @@ async function loadData(sheetName) {
 
     try {
         const cache = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
+        const cached = cache[sheetName];
 
-        if (cache[sheetName]) {
-            allData = cache[sheetName];
+        const now = Date.now();
+
+        // 🔥 проверка TTL кеша
+        if (cached && now - cached.timestamp < CACHE_TTL) {
+            allData = cached.data;
             filteredData = [...allData];
 
             toggleWarning(sheetName);
@@ -73,7 +78,8 @@ async function loadData(sheetName) {
             return;
         }
 
-        const res = await fetch(`${API_URL}?sheet=${sheetName}`);
+        // ❗ иначе грузим свежие данные
+        const res = await fetch(`${API_URL}?sheet=${sheetName}&t=${now}`);
         const data = await res.json();
 
         allData = (data || []).map((item) => ({
@@ -81,7 +87,12 @@ async function loadData(sheetName) {
             price: item.price ?? "",
         }));
 
-        cache[sheetName] = allData;
+        // 💾 сохраняем с timestamp
+        cache[sheetName] = {
+            timestamp: now,
+            data: allData,
+        };
+
         localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
 
         filteredData = [...allData];
