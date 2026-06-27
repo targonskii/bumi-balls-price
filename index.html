@@ -15,67 +15,75 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
         <link
-            rel="icon"
-            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
         />
 
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>"
         />
 
         <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
-        <!-- LOADER (единственный источник загрузки) -->
+        <!-- LOADER (Shopify skeleton) -->
         <div id="loader" class="loader">
-            <div class="loader-card"></div>
-            <div class="loader-card"></div>
-            <div class="loader-card"></div>
+            <div class="loader-card">
+                <div class="sk-title"></div>
+                <div class="sk-price"></div>
+            </div>
+
+            <div class="loader-card">
+                <div class="sk-title"></div>
+                <div class="sk-price"></div>
+            </div>
+
+            <div class="loader-card">
+                <div class="sk-title"></div>
+                <div class="sk-price"></div>
+            </div>
+
+            <div class="loader-card">
+                <div class="sk-title"></div>
+                <div class="sk-price"></div>
+            </div>
         </div>
 
         <div class="container">
-            <!-- HEADER -->
             <header>
                 <div class="logo">🎈</div>
                 <h1>Надувание шаров</h1>
                 <p class="subtitle">Актуальный прайс на услуги</p>
             </header>
 
-            <!-- FILTER -->
             <section class="switch">
                 <button class="tab active" data-sheet="ourBalls">
                     Наши шары
                 </button>
-
                 <button class="tab" data-sheet="guestBalls">
                     Шары клиентов
                 </button>
             </section>
 
-            <!-- SEARCH -->
             <section class="search">
                 <input
-                    type="text"
                     id="searchInput"
+                    type="text"
                     placeholder="Поиск по названию шара"
                 />
             </section>
 
-            <!-- WARNING -->
             <div id="warningBanner" class="warning hidden"></div>
 
-            <!-- CATALOG -->
             <main id="catalog" class="catalog"></main>
 
-            <!-- EMPTY -->
             <div id="empty" class="empty hidden">
                 <div class="empty-icon">🎈</div>
                 <p>Ничего не найдено</p>
             </div>
 
-            <!-- FOOTER -->
             <footer>
                 <p>Цены обновляются автоматически</p>
             </footer>
@@ -83,9 +91,7 @@
 
         <template id="cardTemplate">
             <article class="card">
-                <div class="card-info">
-                    <h2 class="ball-name"></h2>
-                </div>
+                <h2 class="ball-name"></h2>
 
                 <div class="price">
                     <span class="value"></span>

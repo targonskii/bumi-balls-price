@@ -1,66 +1,44 @@
 :root {
     --bg: #fafafa;
     --card: #ffffff;
-    --text: #111111;
-    --muted: #777777;
+    --text: #111;
+    --muted: #777;
     --border: #ececec;
-    --accent: #111111;
     --price: #0f766e;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: Inter, sans-serif;
 }
 
 body {
     background: var(--bg);
     color: var(--text);
-    line-height: 1.4;
 }
-
-/* =======================
-   CONTAINER
-======================= */
 
 .container {
-    max-width: 920px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 24px 16px 60px;
+    padding: 20px 16px 60px;
 }
 
-/* =======================
-   HEADER
-======================= */
-
+/* HEADER */
 header {
-    text-align: left;
     margin-bottom: 18px;
 }
 
 .logo {
     font-size: 36px;
-    margin-bottom: 8px;
 }
 
 h1 {
     font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 4px;
 }
 
-.subtitle {
-    font-size: 13px;
-    color: var(--muted);
-}
-
-/* =======================
-   SWITCH
-======================= */
-
+/* SWITCH */
 .switch {
     display: flex;
     gap: 10px;
@@ -69,63 +47,26 @@ h1 {
 
 .tab {
     flex: 1;
-    padding: 12px 14px;
-    border-radius: 12px;
+    padding: 12px;
     border: 1px solid var(--border);
     background: #fff;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.tab:hover {
-    transform: translateY(-1px);
-    border-color: #ddd;
+    border-radius: 12px;
 }
 
 .tab.active {
-    background: var(--accent);
+    background: #111;
     color: #fff;
-    border-color: var(--accent);
 }
 
-/* =======================
-   SEARCH
-======================= */
-
-.search {
-    margin-bottom: 16px;
-}
-
+/* SEARCH */
 .search input {
     width: 100%;
-    padding: 12px 14px;
+    padding: 12px;
     border-radius: 12px;
     border: 1px solid var(--border);
-    outline: none;
-    font-size: 14px;
-    background: #fff;
 }
 
-.search input:focus {
-    border-color: var(--accent);
-}
-
-/* =======================
-   STATUS
-======================= */
-
-.status {
-    text-align: center;
-    font-size: 13px;
-    color: var(--muted);
-    margin: 10px 0;
-}
-
-/* =======================
-   CATALOG
-======================= */
-
+/* CATALOG */
 .catalog {
     display: flex;
     flex-direction: column;
@@ -133,180 +74,88 @@ h1 {
     margin-top: 10px;
 }
 
-/* =======================
-   CARD
-======================= */
-
+/* REAL CARD */
 .card {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-
+    padding: 14px;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
-
-    padding: 14px;
-
-    transition: all 0.2s ease;
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    border-color: #ddd;
-    box-shadow: var(--shadow);
-}
-
-/* =======================
-   TEXT (FIXED — NO TRUNCATION)
-======================= */
-
+/* TEXT */
 .ball-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-
     flex: 1;
-
-    line-height: 1.4;
-
-    /* ❌ УБРАНО:
-       - line-clamp
-       - overflow hidden
-    */
-
-    white-space: normal;
-    word-break: break-word;
+    font-size: 14px;
 }
 
-/* =======================
-   PRICE
-======================= */
-
+/* PRICE */
 .price {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-
-    min-width: 90px;
     text-align: right;
-
-    flex-shrink: 0;
 }
 
 .value {
-    font-size: 15px;
     font-weight: 700;
     color: var(--price);
-    line-height: 1;
 }
 
-.currency {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
+/* WARNING */
+.warning {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 12px 0;
 }
 
-/* =======================
-   EMPTY
-======================= */
-
-.empty {
-    text-align: center;
-    margin-top: 40px;
-    color: var(--muted);
-}
-
-.empty-icon {
-    font-size: 32px;
-    margin-bottom: 8px;
-}
-
+/* EMPTY */
 .hidden {
     display: none;
 }
 
 /* =======================
-   FOOTER
+   SHOPIFY SKELETON LOADER
 ======================= */
-
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 12px;
-    color: var(--muted);
-}
-
-/* =======================
-   MOBILE
-======================= */
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    .tab {
-        font-size: 13px;
-        padding: 10px;
-    }
-
-    .card {
-        padding: 12px;
-    }
-
-    .ball-name {
-        font-size: 13px;
-    }
-
-    .value {
-        font-size: 14px;
-    }
-}
-
-/* =======================
-   WARNING
-======================= */
-
-.warning {
-    background: #fff7ed;
-    border: 1px solid #fed7aa;
-    color: #9a3412;
-
-    padding: 12px 14px;
-    border-radius: 12px;
-
-    font-size: 12px;
-    line-height: 1.4;
-
-    margin: 12px 0;
-
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
-}
 
 .loader {
     position: fixed;
     inset: 0;
-    background: #fafafa;
-
+    background: var(--bg);
+    padding: 20px 16px;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-
-    padding: 24px 16px;
-
-    z-index: 9999;
+    gap: 10px;
 }
 
 .loader-card {
-    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
     border-radius: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+}
 
-    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 37%, #f0f0f0 63%);
-
+/* shimmer base */
+.sk-title,
+.sk-price {
+    background: linear-gradient(90deg, #eee 25%, #e5e5e5 37%, #eee 63%);
     background-size: 400% 100%;
-    animation: shimmer 1.2s ease infinite;
+    animation: shimmer 1.2s infinite;
+    border-radius: 6px;
+}
+
+.sk-title {
+    width: 60%;
+    height: 12px;
+}
+
+.sk-price {
+    width: 60px;
+    height: 12px;
 }
 
 @keyframes shimmer {
@@ -321,5 +170,5 @@ footer {
 .loader.hide {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: 0.3s;
 }
