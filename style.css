@@ -25,20 +25,60 @@ body {
     padding: 20px 16px 60px;
 }
 
-/* HEADER */
+/* =======================
+   HEADER (NEW with icons support)
+======================= */
+
 header {
     margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
 }
 
 .logo {
     font-size: 36px;
 }
 
-h1 {
+header h1 {
     font-size: 22px;
 }
 
-/* SWITCH */
+header .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* contacts block */
+.header-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+}
+
+.phone,
+.address {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 6px;
+
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--text);
+    line-height: 1.4;
+}
+
+.phone:hover,
+.address:hover {
+    text-decoration: underline;
+}
+
+/* =======================
+   SWITCH
+======================= */
+
 .switch {
     display: flex;
     gap: 10px;
@@ -58,7 +98,10 @@ h1 {
     color: #fff;
 }
 
-/* SEARCH */
+/* =======================
+   SEARCH
+======================= */
+
 .search input {
     width: 100%;
     padding: 12px;
@@ -66,7 +109,10 @@ h1 {
     border: 1px solid var(--border);
 }
 
-/* CATALOG */
+/* =======================
+   CATALOG
+======================= */
+
 .catalog {
     display: flex;
     flex-direction: column;
@@ -74,13 +120,16 @@ h1 {
     margin-top: 10px;
 }
 
-/* REAL CARD */
+/* =======================
+   CARD
+======================= */
+
 .card {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 
-    gap: 20px; /* 🔥 ВОТ ЭТО НУЖНО */
+    gap: 20px;
 
     background: var(--card);
     border: 1px solid var(--border);
@@ -96,19 +145,29 @@ h1 {
 .ball-name {
     flex: 1;
     font-size: 14px;
+    line-height: 1.4;
+
+    /* важно: без обрезки текста */
+    white-space: normal;
+    word-break: break-word;
 }
 
 /* PRICE */
 .price {
     text-align: right;
+    flex-shrink: 0;
 }
 
 .value {
     font-weight: 700;
     color: var(--price);
+    display: block;
 }
 
-/* WARNING */
+/* =======================
+   WARNING (FULL TEXT FIX)
+======================= */
+
 .warning {
     background: #fff7ed;
     border: 1px solid #fed7aa;
@@ -122,21 +181,14 @@ h1 {
 
     margin: 12px 0;
 
-    /* ВАЖНО: полный текст всегда */
+    /* 🔥 гарантированно полный текст */
     white-space: normal;
     word-break: break-word;
     overflow-wrap: anywhere;
-
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
-}
-
-/* EMPTY */
-.hidden {
-    display: none;
 }
 
 /* =======================
-   SHOPIFY SKELETON LOADER
+   LOADER (Shopify style)
 ======================= */
 
 .loader {
@@ -145,6 +197,7 @@ h1 {
     background: var(--bg);
     padding: 20px 16px;
     z-index: 9999;
+
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -154,12 +207,12 @@ h1 {
     display: flex;
     justify-content: space-between;
     padding: 14px;
+
     border-radius: 14px;
     background: #fff;
     border: 1px solid var(--border);
 }
 
-/* shimmer base */
 .sk-title,
 .sk-price {
     background: linear-gradient(90deg, #eee 25%, #e5e5e5 37%, #eee 63%);
@@ -191,4 +244,12 @@ h1 {
     opacity: 0;
     pointer-events: none;
     transition: 0.3s;
+}
+
+/* =======================
+   UTILS
+======================= */
+
+.hidden {
+    display: none;
 }
