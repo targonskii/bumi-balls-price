@@ -31,9 +31,8 @@ const emptyEl = document.getElementById("empty");
 const searchInput = document.getElementById("searchInput");
 const tabs = document.querySelectorAll(".tab");
 const template = document.getElementById("cardTemplate");
-
-// 🔴 WARNING BANNER
 const warningBanner = document.getElementById("warningBanner");
+const loader = document.getElementById("loader");
 
 // =======================
 // INIT
@@ -68,11 +67,24 @@ function bindEvents() {
 }
 
 // =======================
+// LOADER
+// =======================
+
+function hideLoader() {
+    if (!loader) return;
+
+    loader.classList.add("hide");
+
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, 300);
+}
+
+// =======================
 // DATA LOAD (WITH CACHE)
 // =======================
 
 async function loadData(sheetName) {
-    status("Загрузка...");
     catalog.innerHTML = "";
 
     try {
@@ -86,12 +98,13 @@ async function loadData(sheetName) {
 
             toggleWarning(sheetName);
 
-            status("");
             render();
+            hideLoader();
+
             return;
         }
 
-        // 2. FETCH API
+        // 2. API
         const res = await fetch(
             `${API_URL}?sheet=${encodeURIComponent(sheetName)}`,
         );
@@ -109,14 +122,14 @@ async function loadData(sheetName) {
 
         filteredData = [...allData];
 
-        // 3. SAVE CACHE
+        // 3. CACHE SAVE
         cache[sheetName] = allData;
         localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
 
         toggleWarning(sheetName);
 
-        status("");
         render();
+        hideLoader();
     } catch (e) {
         console.error("LOAD ERROR:", e);
         status("Ошибка загрузки данных");
@@ -180,9 +193,9 @@ function render() {
 }
 
 // =======================
-// STATUS
+// STATUS (optional)
 // =======================
 
 function status(text) {
-    statusEl.textContent = text;
+    if (statusEl) statusEl.textContent = text;
 }

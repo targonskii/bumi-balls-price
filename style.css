@@ -284,3 +284,42 @@ footer {
 
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
+
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #fafafa;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 24px 16px;
+
+    z-index: 9999;
+}
+
+.loader-card {
+    height: 64px;
+    border-radius: 14px;
+
+    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 37%, #f0f0f0 63%);
+
+    background-size: 400% 100%;
+    animation: shimmer 1.2s ease infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.loader.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
