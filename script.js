@@ -32,6 +32,9 @@ const searchInput = document.getElementById("searchInput");
 const tabs = document.querySelectorAll(".tab");
 const template = document.getElementById("cardTemplate");
 
+// 🔴 WARNING BANNER
+const warningBanner = document.getElementById("warningBanner");
+
 // =======================
 // INIT
 // =======================
@@ -76,17 +79,19 @@ async function loadData(sheetName) {
         const cached = localStorage.getItem(CACHE_KEY);
         const cache = cached ? JSON.parse(cached) : {};
 
-        // 1. если есть в кеше — используем сразу
+        // 1. CACHE HIT
         if (cache[sheetName]) {
             allData = cache[sheetName];
             filteredData = [...allData];
+
+            toggleWarning(sheetName);
 
             status("");
             render();
             return;
         }
 
-        // 2. иначе грузим с API
+        // 2. FETCH API
         const res = await fetch(
             `${API_URL}?sheet=${encodeURIComponent(sheetName)}`,
         );
@@ -104,15 +109,34 @@ async function loadData(sheetName) {
 
         filteredData = [...allData];
 
-        // 3. сохраняем в кеш
+        // 3. SAVE CACHE
         cache[sheetName] = allData;
         localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+
+        toggleWarning(sheetName);
 
         status("");
         render();
     } catch (e) {
         console.error("LOAD ERROR:", e);
         status("Ошибка загрузки данных");
+    }
+}
+
+// =======================
+// WARNING LOGIC
+// =======================
+
+function toggleWarning(sheetName) {
+    if (!warningBanner) return;
+
+    if (sheetName === SHEETS.theirs) {
+        warningBanner.textContent =
+            "Услуга по надуванию шаров покупателей производится при полной предоплате по данному прейскуранту. Магазин не несет ответственности за сохранность целостности шаров покупателя. В случае, если шар лопнет или повредится в процессе надувания или не взлетит после надувания гелием, услуга все равно оплачивается в полном размере.";
+
+        warningBanner.classList.remove("hidden");
+    } else {
+        warningBanner.classList.add("hidden");
     }
 }
 

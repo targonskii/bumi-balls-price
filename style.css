@@ -270,3 +270,23 @@ footer {
         font-size: 14px;
     }
 }
+
+.warning {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+
+    padding: 12px 14px;
+    border-radius: 12px;
+
+    font-size: 12px;
+    line-height: 1.4;
+
+    margin: 12px 0;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.hidden {
+    display: none;
+}
