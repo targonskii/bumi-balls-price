@@ -13,10 +13,12 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
         <link
             rel="icon"
             href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎈</text></svg>"
         />
+
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
             rel="stylesheet"
@@ -26,19 +28,22 @@
     </head>
 
     <body>
+        <!-- LOADER (единственный источник загрузки) -->
+        <div id="loader" class="loader">
+            <div class="loader-card"></div>
+            <div class="loader-card"></div>
+            <div class="loader-card"></div>
+        </div>
+
         <div class="container">
             <!-- HEADER -->
-
             <header>
                 <div class="logo">🎈</div>
-
                 <h1>Надувание шаров</h1>
-
                 <p class="subtitle">Актуальный прайс на услуги</p>
             </header>
 
             <!-- FILTER -->
-
             <section class="switch">
                 <button class="tab active" data-sheet="ourBalls">
                     Наши шары
@@ -49,14 +54,7 @@
                 </button>
             </section>
 
-            <div id="loader" class="loader">
-                <div class="loader-card"></div>
-                <div class="loader-card"></div>
-                <div class="loader-card"></div>
-            </div>
-
             <!-- SEARCH -->
-
             <section class="search">
                 <input
                     type="text"
@@ -65,33 +63,19 @@
                 />
             </section>
 
-            <div id="warningBanner" class="warning hidden">
-                Услуга по надуванию шаров покупателей производится при полной
-                предоплате по данному прейскуранту. Магазин не несет
-                ответственности за сохранность целостности шаров покупателя. В
-                случае, если шар лопнет или повредится в процессе надувания или
-                не взлетит после надувания гелием, услуга все равно оплачивается
-                в полном размере.
-            </div>
-
-            <!-- STATUS -->
-
-            <div id="status" class="status">Загрузка...</div>
+            <!-- WARNING -->
+            <div id="warningBanner" class="warning hidden"></div>
 
             <!-- CATALOG -->
-
             <main id="catalog" class="catalog"></main>
 
             <!-- EMPTY -->
-
             <div id="empty" class="empty hidden">
                 <div class="empty-icon">🎈</div>
-
                 <p>Ничего не найдено</p>
             </div>
 
             <!-- FOOTER -->
-
             <footer>
                 <p>Цены обновляются автоматически</p>
             </footer>
@@ -105,8 +89,7 @@
 
                 <div class="price">
                     <span class="value"></span>
-
-                    <span class="currency"> BYN </span>
+                    <span class="currency">BYN</span>
                 </div>
             </article>
         </template>
